@@ -61,6 +61,8 @@
         android:background="@drawable/round_button"
         android:fontFamily="casual"
         android:text="Zaloguj się!"
+        android:onClick="goToNewsActivity"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColorHint="	#bb1c24"
         app:layout_constraintEnd_toEndOf="parent"

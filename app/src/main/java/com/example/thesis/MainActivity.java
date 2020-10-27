@@ -19,4 +19,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void goToNewsActivity(View view){
+        Intent intent = new Intent(this, News.class);
+        startActivity(intent);
+        finish();
+    }
 }
