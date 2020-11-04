@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/calendar"
+        android:icon="@drawable/ic_calendar"
+        android:title="Kalendarz"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/activity_sheet"
+        android:title="Arkusz aktywności"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/contacts"
+        android:title="Lista kontaktów"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/projects"
+        android:title="Projekty"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/important_links"
+        android:title="Ważne linki"
+        app:showAsAction="never"/>
+</menu>

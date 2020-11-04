@@ -1,7 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/greetings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".News"/>
+    android:background="@color/eestecRed"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    tools:context=".News">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/eestecRed"
+        android:fontFamily="casual"
+        android:text="Hej, jak się masz?"
+        android:textAlignment="inherit"
+        android:textColor="@color/white"
+        android:textSize="36sp" />
+
+    <ImageView
+        android:id="@+id/news_photo"
+        android:layout_width="459dp"
+        android:layout_height="329dp"
+        android:background="@color/eestecRed"
+        app:srcCompat="@drawable/news_photo" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:background="@color/white" />
+
+    <Button
+        android:id="@+id/add_news"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="casual"
+        android:text="Dodaj ogłoszenie"
+        android:textColor="	#bb1c24" />
+
+    <Button
+        android:id="@+id/remove_news"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="casual"
+        android:text="Usuń ogłoszenie"
+        android:textColor="	#bb1c24" />
+
+</LinearLayout>
+

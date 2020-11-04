@@ -54,7 +54,6 @@
 
     <Button
         android:id="@+id/registrationDone"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
@@ -62,9 +61,7 @@
         android:fontFamily="casual"
         android:text="Zaloguj się!"
         android:onClick="goToNewsActivity"
-
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColorHint="	#bb1c24"
+        android:textColor="	#bb1c24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +71,7 @@
         android:id="@+id/noAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:fontFamily="casual"
         android:text="Nie masz jeszcze konta?  "
