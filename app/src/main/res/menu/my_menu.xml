@@ -7,9 +7,15 @@
         android:title="Kalendarz"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/activity_sheet"
+    <item
+        android:id="@+id/news"
+        android:title="Ogłoszenia"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/activity_sheet"
         android:title="Arkusz aktywności"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item android:id="@+id/contacts"
         android:title="Lista kontaktów"
