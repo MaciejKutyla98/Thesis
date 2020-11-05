@@ -41,7 +41,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/round_button_white"
         android:fontFamily="casual"
         android:text="Dodaj ogłoszenie"
         android:textColor="	#bb1c24" />
@@ -53,7 +53,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/round_button_white"
         android:fontFamily="casual"
         android:text="Usuń ogłoszenie"
         android:textColor="	#bb1c24" />
