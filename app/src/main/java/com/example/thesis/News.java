@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
@@ -13,11 +15,24 @@ import android.widget.Toast;
 
 public class News extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+
+    String title_of_news[], description_of_news[];
+    int avatars[] = {R.drawable.round_event_white_18dp, R.drawable.round_fitness_center_white_18dp, R.drawable.round_coronavirus_white_18dp, R.drawable.round_notifications_active_white_18dp, R.drawable.round_train_white_18dp};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        recyclerView = findViewById(R.id.news_recycler);
+
+        title_of_news = getResources().getStringArray(R.array.latest_news);
+        description_of_news = getResources().getStringArray(R.array.description);
+
+        RecyclerNewsAdapter recyclerNewsAdapter = new RecyclerNewsAdapter(this, title_of_news, description_of_news, avatars);
+        recyclerView.setAdapter(recyclerNewsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 

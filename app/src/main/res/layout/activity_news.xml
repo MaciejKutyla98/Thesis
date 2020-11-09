@@ -11,36 +11,28 @@
     tools:context=".News">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/eestecRed"
-        android:fontFamily="casual"
-        android:text="Hej, jak się masz?"
-        android:textAlignment="inherit"
-        android:textColor="@color/white"
-        android:textSize="36sp" />
-
     <ImageView
         android:id="@+id/news_photo"
         android:layout_width="wrap_content"
-        android:layout_height="329dp"
+        android:layout_height="330dp"
         android:background="@color/eestecRed"
         app:srcCompat="@drawable/news_photo" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/news_recycler"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:background="@color/white" />
+        android:layout_height="300dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/round_button_red" />
 
     <Button
         android:id="@+id/add_news"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:background="@drawable/round_button_white"
         android:fontFamily="casual"
         android:text="Dodaj ogłoszenie"
@@ -51,8 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:background="@drawable/round_button_white"
         android:fontFamily="casual"
         android:text="Usuń ogłoszenie"
