@@ -1,5 +1,6 @@
 package com.example.thesis;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -33,7 +34,7 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsHolder newsHolder, final int i) {
+    public void onBindViewHolder(@NonNull NewsHolder newsHolder, @SuppressLint("RecyclerView") final int i) {
         newsHolder.title.setText(title_of_news[i]);
         newsHolder.description.setText(description_of_news[i]);
         newsHolder.avatar.setImageResource(avatars[i]);
