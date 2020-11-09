@@ -83,75 +83,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/fanpage_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="casual"
-                android:onClick="openFacebookPage"
-                android:text="FACEBOOK"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/fanpage_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="casual"
-                android:onClick="openFacebookPage"
-                android:text="FACEBOOK"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/fanpage_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="casual"
-                android:onClick="openFacebookPage"
-                android:text="FACEBOOK"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/fanpage_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="casual"
-                android:onClick="openFacebookPage"
-                android:text="FACEBOOK"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/fanpage_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="casual"
-                android:onClick="openFacebookPage"
-                android:text="FACEBOOK"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/noAccount"

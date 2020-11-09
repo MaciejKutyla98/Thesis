@@ -85,13 +85,16 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/round_button_white"
         android:fontFamily="casual"
         android:onClick="goToRegisterActivity"
         android:text="Zarejestruj się!"
         android:textColor="#bb1c24"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toEndOf="@+id/noAccount"
         app:layout_constraintTop_toBottomOf="@+id/registrationDone" />
+
 </android.support.constraint.ConstraintLayout>

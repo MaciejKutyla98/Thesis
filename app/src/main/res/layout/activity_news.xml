@@ -24,7 +24,7 @@
 
     <ImageView
         android:id="@+id/news_photo"
-        android:layout_width="459dp"
+        android:layout_width="wrap_content"
         android:layout_height="329dp"
         android:background="@color/eestecRed"
         app:srcCompat="@drawable/news_photo" />
