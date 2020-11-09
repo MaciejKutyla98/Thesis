@@ -1,7 +1,9 @@
 package com.example.thesis;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +33,19 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsHolder newsHolder, int i) {
+    public void onBindViewHolder(@NonNull NewsHolder newsHolder, final int i) {
         newsHolder.title.setText(title_of_news[i]);
         newsHolder.description.setText(description_of_news[i]);
         newsHolder.avatar.setImageResource(avatars[i]);
+        newsHolder.mainNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launchNewIntent = new Intent(context, DetailNews.class);
+                launchNewIntent.putExtra("title_of_news", title_of_news[i]);
+                launchNewIntent.putExtra("description_of_news", description_of_news[i]);
+                context.startActivity(launchNewIntent);
+            }
+        });
     }
 
     @Override
@@ -47,11 +58,14 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
         TextView title, description;
         ImageView avatar;
 
+        ConstraintLayout mainNews;
+
         public NewsHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.news_tittle_txt);
             description = itemView.findViewById(R.id.news_description_txt);
             avatar = itemView.findViewById(R.id.type_of_news_img);
+            mainNews = itemView.findViewById(R.id.mainNews);
         }
     }
 }

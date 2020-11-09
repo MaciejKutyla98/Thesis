@@ -18,7 +18,7 @@ public class News extends AppCompatActivity {
     RecyclerView recyclerView;
 
     String title_of_news[], description_of_news[];
-    int avatars[] = {R.drawable.round_event_white_18dp, R.drawable.round_fitness_center_white_18dp, R.drawable.round_coronavirus_white_18dp, R.drawable.round_notifications_active_white_18dp, R.drawable.round_train_white_18dp};
+    int avatars[] = {R.drawable.round_event_white_18dp, R.drawable.round_fitness_center_white_18dp, R.drawable.round_coronavirus_white_18dp, R.drawable.round_notifications_active_white_18dp, R.drawable.round_train_white_18dp,R.drawable.round_event_white_18dp,R.drawable.round_event_white_18dp};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

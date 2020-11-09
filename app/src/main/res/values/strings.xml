@@ -5,7 +5,9 @@
         <item>Sport!</item>
         <item>Covid Alert!</item>
         <item>Przypominajka</item>
-        <item>Nowy event międzynarodowy!</item>
+        <item>Nowy event!</item>
+        <item>Nowe spotkanie!</item>
+        <item>Nowe spotkanie!</item>
     </string-array>
 
     <string-array name="description">
@@ -13,6 +15,8 @@
         <item>Lorem Ipsum is simply dummy text of the printing and tyIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</item>
         <item>Randowy opis ogłoszenia od zarządu</item>
         <item>Lorem Ipsum is simply  type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</item>
+        <item>Randowy opis ogłoszenia od zarządu</item>
+        <item>Randowy opis ogłoszenia od zarządu</item>
         <item>Randowy opis ogłoszenia od zarządu</item>
     </string-array>
 </resources>
