@@ -1,13 +1,10 @@
 package com.example.thesis;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,14 +22,7 @@ public class News extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        recyclerView = findViewById(R.id.news_recycler);
-
-        title_of_news = getResources().getStringArray(R.array.latest_news);
-        description_of_news = getResources().getStringArray(R.array.description);
-
-        RecyclerNewsAdapter recyclerNewsAdapter = new RecyclerNewsAdapter(this, title_of_news, description_of_news, avatars);
-        recyclerView.setAdapter(recyclerNewsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initRecyclerNews();
 
     }
 
@@ -115,5 +105,16 @@ public class News extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void initRecyclerNews(){
+        recyclerView = findViewById(R.id.news_recycler);
+
+        title_of_news = getResources().getStringArray(R.array.latest_news);
+        description_of_news = getResources().getStringArray(R.array.description);
+
+        NewsAdapter newsAdapter = new NewsAdapter(this, title_of_news, description_of_news, avatars);
+        recyclerView.setAdapter(newsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

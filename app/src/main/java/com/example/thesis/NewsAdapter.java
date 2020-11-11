@@ -12,13 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapter.NewsHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     String title_of_news[], description_of_news[];
     int avatars[];
     Context context;
 
-    public  RecyclerNewsAdapter(Context ct, String title[], String description[], int img[]){
+    public NewsAdapter(Context ct, String title[], String description[], int img[]){
         this.context = ct;
         this.title_of_news = title;
         this.description_of_news = description;
