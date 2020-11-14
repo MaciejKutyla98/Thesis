@@ -109,7 +109,7 @@ public class Contacts extends AppCompatActivity {
 
     private void initRecyclerContacts(){
         recyclerView = findViewById(R.id.contacts_recycler);
-        ContactsAdapter contactsAdapter = new ContactsAdapter(personList);
+        ContactsAdapter contactsAdapter = new ContactsAdapter(personList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(contactsAdapter);
     }
@@ -129,7 +129,7 @@ public class Contacts extends AppCompatActivity {
                 "514749397",
                 "maciejo117@gmail.com"));
         personList.add(new Person("Justyna Palczynska",
-                "514749397",
+                "123456789",
                 "maciejo117@gmail.com"));
     }
 }
