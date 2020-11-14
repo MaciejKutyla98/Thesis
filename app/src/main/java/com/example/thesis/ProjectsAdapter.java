@@ -36,7 +36,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.Projec
         projectsHolder.nameTextView.setText(project.getProjectName());
         projectsHolder.descriptionTextView.setText(project.getDescription());
         projectsHolder.dateTextView.setText(project.getDate());
-        projectsHolder.cooridnatorsTextView.setText(project.getCoordinators());
+        projectsHolder.coordinatorsTextView.setText(project.getCoordinators());
         projectsHolder.logo.setImageResource(project.getLogo());
 
         boolean isExpanded = projectList.get(i).isExpanded();
@@ -52,7 +52,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.Projec
 
         ConstraintLayout projectDetailsLayout;
         ImageView logo;
-        TextView nameTextView, descriptionTextView, dateTextView, cooridnatorsTextView;
+        TextView nameTextView, descriptionTextView, dateTextView, coordinatorsTextView;
 
         public ProjectsHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,7 +61,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.Projec
             nameTextView = itemView.findViewById(R.id.project_name);
             descriptionTextView = itemView.findViewById(R.id.project_description);
             dateTextView = itemView.findViewById(R.id.project_date);
-            cooridnatorsTextView = itemView.findViewById(R.id.project_coordinators);
+            coordinatorsTextView = itemView.findViewById(R.id.project_coordinators);
             projectDetailsLayout = itemView.findViewById(R.id.project_details_Layout);
 
             nameTextView.setOnClickListener(new View.OnClickListener(){
