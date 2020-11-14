@@ -10,20 +10,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class News extends AppCompatActivity {
 
     RecyclerView recyclerView;
-
-    String title_of_news[], description_of_news[];
-    int avatars[] = {R.drawable.round_event_white_18dp, R.drawable.round_fitness_center_white_18dp, R.drawable.round_coronavirus_white_18dp, R.drawable.round_notifications_active_white_18dp, R.drawable.round_train_white_18dp,R.drawable.round_event_white_18dp,R.drawable.round_event_white_18dp};
+    List<SingleNews> newsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        initData();
         initRecyclerNews();
-
     }
 
     @Override
@@ -109,12 +110,33 @@ public class News extends AppCompatActivity {
 
     private void initRecyclerNews(){
         recyclerView = findViewById(R.id.news_recycler);
-
-        title_of_news = getResources().getStringArray(R.array.latest_news);
-        description_of_news = getResources().getStringArray(R.array.description);
-
-        NewsAdapter newsAdapter = new NewsAdapter(this, title_of_news, description_of_news, avatars);
-        recyclerView.setAdapter(newsAdapter);
+        NewsAdapter newsAdapter  = new NewsAdapter(newsList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(newsAdapter);
+    }
+
+    private void initData(){
+        newsList = new ArrayList<>();
+        newsList.add(new SingleNews(R.drawable.round_event_white_18dp,
+                "Nowe spotkanie!",
+                "Randomowy opis od zarządy"));
+        newsList.add(new SingleNews(R.drawable.round_fitness_center_white_18dp,
+                "Sport!",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."));
+        newsList.add(new SingleNews(R.drawable.round_coronavirus_white_18dp,
+                "Covid Alert!",
+                "Randomowy opis od zarządy"));
+        newsList.add(new SingleNews(R.drawable.round_notifications_active_white_18dp,
+                "Przypominajka!",
+                "Randomowy opis od zarządy"));
+        newsList.add(new SingleNews(R.drawable.round_train_white_18dp,
+                "Międzynarodówka!",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."));
+        newsList.add(new SingleNews(R.drawable.round_event_white_18dp,
+                "Nowe spotkanie",
+                "Randomowy opis od zarządy"));
+        newsList.add(new SingleNews(R.drawable.round_event_white_18dp,
+                "Nowe spotkanie",
+                "Randomowy opis od zarządy"));
     }
 }

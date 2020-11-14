@@ -12,38 +12,39 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
-    String title_of_news[], description_of_news[];
-    int avatars[];
+    List<SingleNews> newsList;
     Context context;
 
-    public NewsAdapter(Context ct, String title[], String description[], int img[]){
-        this.context = ct;
-        this.title_of_news = title;
-        this.description_of_news = description;
-        this.avatars = img;
+    public NewsAdapter(List<SingleNews> newsList, Context context ){
+        this.newsList = newsList;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public NewsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.news_row, viewGroup, false);
-        return new  NewsHolder(view);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_row, viewGroup, false);
+        return new NewsHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsHolder newsHolder, @SuppressLint("RecyclerView") final int i) {
-        newsHolder.title.setText(title_of_news[i]);
-        newsHolder.description.setText(description_of_news[i]);
-        newsHolder.avatar.setImageResource(avatars[i]);
+    public void onBindViewHolder(@NonNull NewsHolder newsHolder, int i) {
+        SingleNews singleNews = newsList.get(i);
+        newsHolder.title.setText(singleNews.getTittleOfNews());
+        newsHolder.description.setText(singleNews.getDescriptionOfNews());
+        newsHolder.avatar.setImageResource(singleNews.getAvatar());
+        final String titleOfNews = singleNews.getTittleOfNews();
+        final String descriptionOfNews = singleNews.getDescriptionOfNews();
         newsHolder.mainNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent launchNewIntent = new Intent(context, DetailNews.class);
-                launchNewIntent.putExtra("title_of_news", title_of_news[i]);
-                launchNewIntent.putExtra("description_of_news", description_of_news[i]);
+                launchNewIntent.putExtra("title_of_news", titleOfNews);
+                launchNewIntent.putExtra("description_of_news", descriptionOfNews);
                 context.startActivity(launchNewIntent);
             }
         });
@@ -51,7 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     @Override
     public int getItemCount() {
-        return avatars.length;
+        return newsList.size();
     }
 
     public class NewsHolder extends RecyclerView.ViewHolder {
