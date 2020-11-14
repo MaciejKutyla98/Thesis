@@ -10,10 +10,10 @@ public class Person {
     private String yearOfStudy;
     private String position;
     private String internationalActivity;
-    private Status currentStatus;
+    private String currentStatus;
     private boolean expanded;
 
-    public Person(String name, String telephoneNumber, String mail, String fieldOfStudy, String faculty, String yearOfStudy, String position, String internationalActivity, Status currentStatus) {
+    public Person(String name, String telephoneNumber, String mail, String fieldOfStudy, String faculty, String yearOfStudy, String position, String internationalActivity, String currentStatus) {
         this.name = name;
         this.telephoneNumber = telephoneNumber;
         this.mail = mail;
@@ -33,7 +33,7 @@ public class Person {
         this.expanded = false;
     }
 
-    public Person(String name, String fieldOfStudy, String faculty, String yearOfStudy, String position, String internationalActivity, Status currentStatus) {
+    public Person(String name, String fieldOfStudy, String faculty, String yearOfStudy, String position, String internationalActivity, String currentStatus) {
         this.name = name;
         this.fieldOfStudy = fieldOfStudy;
         this.faculty = faculty;
@@ -108,11 +108,11 @@ public class Person {
         this.internationalActivity = internationalActivity;
     }
 
-    public Status getCurrentStatus() {
+    public String getCurrentStatus() {
         return currentStatus;
     }
 
-    public void setCurrentStatus(Status currentStatus) {
+    public void setCurrentStatus(String currentStatus) {
         this.currentStatus = currentStatus;
     }
 

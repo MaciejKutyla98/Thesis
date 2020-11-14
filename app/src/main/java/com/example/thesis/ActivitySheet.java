@@ -3,17 +3,28 @@ package com.example.thesis;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ActivitySheet extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    List<Person> personList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sheet);
+
+        initData();
+        initRecyclerActivity();
     }
 
     @Override
@@ -27,8 +38,16 @@ public class ActivitySheet extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.calendar:
-                Toast.makeText(this, "calendar selected", Toast.LENGTH_SHORT).show();
-                return true;
+                if (this.getClass().getSimpleName().equals("Calendar")){
+                    Toast.makeText(this, "Jesteś już w kalendarzu!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                else {
+                    Intent launchNewIntent = new Intent(this, Calendar.class);
+                    startActivityForResult(launchNewIntent, 0);
+                    finish();
+                    return true;
+                }
             case R.id.news:
                 if (this.getClass().getSimpleName().equals("News")){
                     Toast.makeText(this, "Jesteś już w ogłoszeniach!", Toast.LENGTH_SHORT).show();
@@ -87,5 +106,135 @@ public class ActivitySheet extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void initRecyclerActivity(){
+        recyclerView = findViewById(R.id.activity_recycler);
+        ActivityAdapter activityAdapter = new ActivityAdapter(personList, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(activityAdapter);
+    }
+
+    private void initData(){
+        personList = new ArrayList<>();
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Maciej Kutyła",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+        personList.add(new Person("Hubert Kompanowski",
+                "Informatyka",
+                "Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej",
+                "IV",
+                "IT Team Koordynator",
+                "History Collectors Member",
+                "Active Member"));
+
+
     }
 }
