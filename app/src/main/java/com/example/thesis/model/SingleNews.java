@@ -1,4 +1,4 @@
-package com.example.thesis;
+package com.example.thesis.model;
 
 public class SingleNews {
 

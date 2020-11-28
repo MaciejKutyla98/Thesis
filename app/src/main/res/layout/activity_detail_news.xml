@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/eestecRed"
-    tools:context=".DetailNews">
+    tools:context=".view.DetailNews">
 
     <ImageView
         android:id="@+id/detail_news_image"

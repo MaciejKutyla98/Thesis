@@ -1,30 +1,23 @@
-package com.example.thesis;
+package com.example.thesis.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.thesis.R;
 
-public class Contacts extends AppCompatActivity {
-
-    RecyclerView recyclerView;
-    List<Person> personList;
+public class ImportantLinks extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts);
-
-        initData();
-        initRecyclerContacts();
+        setContentView(R.layout.activity_important_links);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,16 +30,8 @@ public class Contacts extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.calendar:
-                if (this.getClass().getSimpleName().equals("Calendar")){
-                    Toast.makeText(this, "Jesteś już w kalendarzu!", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                else {
-                    Intent launchNewIntent = new Intent(this, Calendar.class);
-                    startActivityForResult(launchNewIntent, 0);
-                    finish();
-                    return true;
-                }
+                Toast.makeText(this, "calendar selected", Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.news:
                 if (this.getClass().getSimpleName().equals("News")){
                     Toast.makeText(this, "Jesteś już w ogłoszeniach!", Toast.LENGTH_SHORT).show();
@@ -107,29 +92,33 @@ public class Contacts extends AppCompatActivity {
         }
     }
 
-    private void initRecyclerContacts(){
-        recyclerView = findViewById(R.id.contacts_recycler);
-        ContactsAdapter contactsAdapter = new ContactsAdapter(personList, this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(contactsAdapter);
+    public void openForum(View view){
+        Uri uri = Uri.parse("https://forum.eestec.agh.edu.pl");
+        Intent launchNewIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(launchNewIntent);
     }
 
-    private void initData(){
-        personList = new ArrayList<>();
-        personList.add(new Person("Maciej Kutyła",
-               "514749397",
-                "maciejo117@gmail.com"));
-        personList.add(new Person("Hubert Kompanowski",
-                "514749397",
-                "maciejo117@gmail.com"));
-        personList.add(new Person("Alicja Brajner",
-                "514749397",
-                "maciejo117@gmail.com"));
-        personList.add(new Person("Tymek Zapalka",
-                "514749397",
-                "maciejo117@gmail.com"));
-        personList.add(new Person("Justyna Palczynska",
-                "123456789",
-                "maciejo117@gmail.com"));
+    public void openEESTECNet(View view){
+        Uri uri = Uri.parse("https://eestec.net");
+        Intent launchNewIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(launchNewIntent);
+    }
+
+    public void openFacebookGroup(View view){
+        Uri uri = Uri.parse("https://www.facebook.com/groups/EESTEC.AGH.Krakow");
+        Intent launchNewIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(launchNewIntent);
+    }
+
+    public void openInstagram(View view){
+        Uri uri = Uri.parse("https://www.instagram.com/eestec_lc_krakow/?hl=pl");
+        Intent launchNewIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(launchNewIntent);
+    }
+
+    public void openFacebookPage(View view){
+        Uri uri = Uri.parse("https://www.facebook.com/EESTEC.AGH.Krakow");
+        Intent launchNewIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(launchNewIntent);
     }
 }

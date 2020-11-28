@@ -1,10 +1,12 @@
-package com.example.thesis;
+package com.example.thesis.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.thesis.R;
 
 public class DetailNews extends AppCompatActivity {
 

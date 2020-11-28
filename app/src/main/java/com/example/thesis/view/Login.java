@@ -1,9 +1,11 @@
-package com.example.thesis;
+package com.example.thesis.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.thesis.R;
 
 public class Login extends AppCompatActivity {
 

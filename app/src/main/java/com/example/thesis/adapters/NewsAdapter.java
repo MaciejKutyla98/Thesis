@@ -1,6 +1,5 @@
-package com.example.thesis;
+package com.example.thesis.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.thesis.R;
+import com.example.thesis.model.SingleNews;
+import com.example.thesis.view.DetailNews;
 
 import java.util.List;
 

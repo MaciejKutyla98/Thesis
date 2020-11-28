@@ -1,4 +1,4 @@
-package com.example.thesis;
+package com.example.thesis.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.thesis.R;
 
 public class Calendar extends AppCompatActivity {
 

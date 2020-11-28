@@ -8,7 +8,7 @@
     android:background="@color/eestecRed"
     android:orientation="vertical"
     android:textAlignment="center"
-    tools:context=".News">
+    tools:context=".view.News">
 
 
     <ImageView
