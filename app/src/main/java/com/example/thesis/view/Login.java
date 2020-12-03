@@ -22,8 +22,8 @@ public class Login extends AppCompatActivity {
         finish();
     }
 
-    public void goToNewsActivity(View view){
-        Intent launchNewIntent = new Intent(this, News.class);
+    public void goToOrganizationDetailsActivity(View view){
+        Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
         startActivity(launchNewIntent);
         finish();
     }

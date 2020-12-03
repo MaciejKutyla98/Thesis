@@ -7,6 +7,10 @@
         android:title="Kalendarz"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/organization_details"
+        android:title="O Organizacji"
+        app:showAsAction="never"/>
+
     <item
         android:id="@+id/news"
         android:title="Ogłoszenia"
@@ -28,4 +32,5 @@
     <item android:id="@+id/important_links"
         android:title="Ważne linki"
         app:showAsAction="never"/>
+
 </menu>

@@ -11,29 +11,20 @@
     tools:context=".view.News">
 
 
-    <ImageView
-        android:id="@+id/news_photo"
-        android:layout_width="418dp"
-        android:layout_height="299dp"
-        android:background="@drawable/white_border"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/news_photo" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/news_recycler"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginBottom="200dp"
         android:background="@color/eestecRed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/news_photo"
-        app:layout_constraintVertical_bias="0.055">
+        app:layout_constraintTop_toTopOf="parent">
 
     </android.support.v7.widget.RecyclerView>
 

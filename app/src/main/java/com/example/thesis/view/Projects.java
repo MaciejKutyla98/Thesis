@@ -107,6 +107,17 @@ public class Projects extends AppCompatActivity {
                     finish();
                     return true;
                 }
+            case R.id.organization_details:
+                if (this.getClass().getSimpleName().equals("OrganizationDetails")){
+                    Toast.makeText(this, "Jesteś już w informacjach o organizacji!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                else {
+                    Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    startActivityForResult(launchNewIntent, 0);
+                    finish();
+                    return true;
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
