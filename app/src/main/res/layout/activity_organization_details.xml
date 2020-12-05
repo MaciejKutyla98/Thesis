@@ -23,13 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="400dp"
-        android:text="EESTEC AGH Kraków"
+
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -39,7 +38,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:text="EESTEC AGH Kraków to organizacja studencka działająca na Akademii Górniczo-Hutniczej w Krakowie, która tworzymy lokalne i międzynarodowe projekty dając studentom możliwość rozwoju umiejętności liderskich i technicznych oraz poznawania innych kultur."
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +115,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="prof. Cezary Worek"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -130,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
-        android:text="C2 216"
+
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -143,7 +140,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="marzec 1998 "
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -156,7 +152,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="111 + alumnii"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -169,7 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="5"
+
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
