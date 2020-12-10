@@ -17,6 +17,11 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/teams"
+        android:title="Zespoły całoroczne"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/activity_sheet"
         android:title="Arkusz aktywności"
         app:showAsAction="never" />

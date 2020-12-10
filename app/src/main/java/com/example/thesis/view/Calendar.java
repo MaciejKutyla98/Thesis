@@ -39,6 +39,17 @@ public class Calendar extends AppCompatActivity {
                     finish();
                     return true;
                 }
+            case R.id.teams:
+                if (this.getClass().getSimpleName().equals("Teams")){
+                    Toast.makeText(this, "Jesteś już w informacjach o zespołach całorocznych!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                else {
+                    Intent launchNewIntent = new Intent(this, Teams.class);
+                    startActivityForResult(launchNewIntent, 0);
+                    finish();
+                    return true;
+                }
             case R.id.news:
                 if (this.getClass().getSimpleName().equals("News")){
                     Toast.makeText(this, "Jesteś już w ogłoszeniach!", Toast.LENGTH_SHORT).show();

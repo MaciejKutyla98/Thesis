@@ -12,9 +12,10 @@
         android:label="EESTEC AGH Kraków"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme2">
-        <activity android:name=".view.OrganizationDetails"></activity>
+        android:theme="@style/AppTheme2"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.Teams"></activity>
+        <activity android:name=".view.OrganizationDetails" />
         <activity
             android:name=".view.DetailNews"
             android:label="Details"

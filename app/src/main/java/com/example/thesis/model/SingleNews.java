@@ -5,6 +5,7 @@ public class SingleNews {
     private int avatar;
     private String tittleOfNews;
     private String descriptionOfNews;
+  //  private String date;
 
     public SingleNews(int avatar, String tittleOfNews, String descriptionOfNews) {
         this.avatar = avatar;
