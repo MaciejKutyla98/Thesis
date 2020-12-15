@@ -26,6 +26,9 @@ public class Person {
         this.expanded = false;
     }
 
+    public Person() {
+    }
+
     public Person(String name, String telephoneNumber, String mail) {
         this.name = name;
         this.telephoneNumber = telephoneNumber;

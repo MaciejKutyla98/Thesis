@@ -39,15 +39,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         SingleNews singleNews = newsList.get(i);
         newsHolder.title.setText(singleNews.getTittleOfNews());
         newsHolder.description.setText(singleNews.getDescriptionOfNews());
-        newsHolder.avatar.setImageResource(singleNews.getAvatar());
+        newsHolder.date.setText(singleNews.getDate());
         final String titleOfNews = singleNews.getTittleOfNews();
         final String descriptionOfNews = singleNews.getDescriptionOfNews();
+        final String dateOfNews = singleNews.getDate();
         newsHolder.mainNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent launchNewIntent = new Intent(context, DetailNews.class);
+                launchNewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 launchNewIntent.putExtra("title_of_news", titleOfNews);
                 launchNewIntent.putExtra("description_of_news", descriptionOfNews);
+                launchNewIntent.putExtra("news_date", dateOfNews);
                 context.startActivity(launchNewIntent);
             }
         });
@@ -60,16 +63,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     public class NewsHolder extends RecyclerView.ViewHolder {
 
-        TextView title, description;
-        ImageView avatar;
-
+        TextView title, description, date;
         ConstraintLayout mainNews;
 
         public NewsHolder(@NonNull View itemView) {
             super(itemView);
+            date = itemView.findViewById(R.id.news_date_txt);
             title = itemView.findViewById(R.id.news_tittle_txt);
             description = itemView.findViewById(R.id.news_description_txt);
-            avatar = itemView.findViewById(R.id.type_of_news_img);
             mainNews = itemView.findViewById(R.id.mainNews);
         }
     }

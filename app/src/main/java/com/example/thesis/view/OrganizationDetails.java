@@ -32,11 +32,8 @@ public class OrganizationDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization_details);
-
-
+        
         organizationDetailsList  = new ArrayList<>();
-
-
         new GetData().execute();
     }
 
@@ -193,67 +190,67 @@ public class OrganizationDetails extends AppCompatActivity {
 
             }
         }
-    }
 
-    protected void initOrgaznizationDetailsData (String jsonStr){
-        Log.e(TAG, "Response from url: " + jsonStr);
-        if (jsonStr != null) {
-            try {
-                JSONObject jsonObj = new JSONObject(jsonStr);
+        protected void initOrgaznizationDetailsData (String jsonStr){
+            Log.e(TAG, "Response from url: " + jsonStr);
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
 
-                // Getting JSON Array node
-                JSONArray organization = jsonObj.getJSONArray("organization");
+                    // Getting JSON Array node
+                    JSONArray organization = jsonObj.getJSONArray("organization");
 
-                // looping through All Contacts
-                for (int i = 0; i < organization.length(); i++) {
-                    JSONObject c = organization.getJSONObject(i);
-                    String organization_description = c.getString("organization_description");
-                    String organization_name = c.getString("organization_name");
-                    String organization_supervasior = c.getString("organization_supervasior");
-                    String supervisor_room = c.getString("supervisor_room");
-                    String creation_date = c.getString("creation_date");
-                    String number_of_active_projects = c.getString("number_of_active_projects");
-                    String number_of_members = c.getString("number_of_members");
+                    // looping through All Contacts
+                    for (int i = 0; i < organization.length(); i++) {
+                        JSONObject c = organization.getJSONObject(i);
+                        String organization_description = c.getString("organization_description");
+                        String organization_name = c.getString("organization_name");
+                        String organization_supervasior = c.getString("organization_supervasior");
+                        String supervisor_room = c.getString("supervisor_room");
+                        String creation_date = c.getString("creation_date");
+                        String number_of_active_projects = c.getString("number_of_active_projects");
+                        String number_of_members = c.getString("number_of_members");
 
 
-                    // tmp hash map for single contact
-                    HashMap<String, String> organizationMap = new HashMap<>();
+                        // tmp hash map for single contact
+                        HashMap<String, String> organizationMap = new HashMap<>();
 
-                    // adding each child node to HashMap key => value
-                    organizationMap.put("organization_description", organization_description);
-                    organizationMap.put("organization_name", organization_name);
-                    organizationMap.put("organization_supervasior", organization_supervasior);
-                    organizationMap.put("supervisor_room", supervisor_room);
-                    organizationMap.put("creation_date", creation_date);
-                    organizationMap.put("number_of_active_projects", number_of_active_projects);
-                    organizationMap.put("number_of_members", number_of_members);
+                        // adding each child node to HashMap key => value
+                        organizationMap.put("organization_description", organization_description);
+                        organizationMap.put("organization_name", organization_name);
+                        organizationMap.put("organization_supervasior", organization_supervasior);
+                        organizationMap.put("supervisor_room", supervisor_room);
+                        organizationMap.put("creation_date", creation_date);
+                        organizationMap.put("number_of_active_projects", number_of_active_projects);
+                        organizationMap.put("number_of_members", number_of_members);
 
-                    // adding contact to contact list
-                    organizationDetailsList.add(organizationMap);
+                        // adding contact to contact list
+                        organizationDetailsList.add(organizationMap);
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
                 }
-            } catch (final JSONException e) {
-                Log.e(TAG, "Json parsing error: " + e.getMessage());
+
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(),
-                                "Json parsing error: " + e.getMessage(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
                                 Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
-
-        } else {
-            Log.e(TAG, "Couldn't get json from server.");
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(getApplicationContext(),
-                            "Couldn't get json from server. Check LogCat for possible errors!",
-                            Toast.LENGTH_LONG).show();
-                }
-            });
         }
     }
 }

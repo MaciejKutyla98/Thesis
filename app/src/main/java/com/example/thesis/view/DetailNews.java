@@ -11,9 +11,9 @@ import com.example.thesis.R;
 public class DetailNews extends AppCompatActivity {
 
     ImageView imageView;
-    TextView title, description;
+    TextView title, description, date;
 
-    String receivedTitle, recivedDescription;
+    String receivedTitle, recivedDescription, recivedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class DetailNews extends AppCompatActivity {
         imageView = findViewById(R.id.detail_news_image);
         title = findViewById(R.id.detail_news_title);
         description = findViewById(R.id.detail_news_description);
+        date = findViewById(R.id.detail_news_date);
 
         getData();
         setData();
@@ -32,6 +33,7 @@ public class DetailNews extends AppCompatActivity {
         if(getIntent().hasExtra("title_of_news") && getIntent().hasExtra("description_of_news")){
             receivedTitle = getIntent().getStringExtra("title_of_news");
             recivedDescription = getIntent().getStringExtra("description_of_news");
+            recivedDate= getIntent().getStringExtra("news_date");
     }else{
             Toast.makeText(this, "Brak parametrów do przekazania", Toast.LENGTH_SHORT).show();
         }
@@ -40,6 +42,7 @@ public class DetailNews extends AppCompatActivity {
     private void setData(){
         title.setText(receivedTitle);
         description.setText(recivedDescription);
+        date.setText(recivedDate);
     }
 
 }

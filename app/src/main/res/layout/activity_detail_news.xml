@@ -7,42 +7,58 @@
     android:background="@color/eestecRed"
     tools:context=".view.DetailNews">
 
-    <ImageView
-        android:id="@+id/detail_news_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/eestec" />
-
-    <TextView
-        android:id="@+id/detail_news_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:textAlignment="center"
-        android:text="Tytuł"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_news_image" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/detail_news_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:text="Opis"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_news_title" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/detail_news_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:text="20.12.2020"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:textSize="28dp" />
+
+            <ImageView
+                android:id="@+id/detail_news_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/eestec" />
+
+            <TextView
+                android:id="@+id/detail_news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Tytuł"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="33dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detail_news_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Opis"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

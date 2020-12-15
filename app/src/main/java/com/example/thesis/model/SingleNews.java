@@ -2,23 +2,14 @@ package com.example.thesis.model;
 
 public class SingleNews {
 
-    private int avatar;
     private String tittleOfNews;
     private String descriptionOfNews;
-  //  private String date;
+    private String date;
 
-    public SingleNews(int avatar, String tittleOfNews, String descriptionOfNews) {
-        this.avatar = avatar;
+    public SingleNews(String date, String descriptionOfNews, String tittleOfNews) {
         this.tittleOfNews = tittleOfNews;
         this.descriptionOfNews = descriptionOfNews;
-    }
-
-    public int getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
+        this.date = date;
     }
 
     public String getTittleOfNews() {
@@ -35,5 +26,13 @@ public class SingleNews {
 
     public void setDescriptionOfNews(String descriptionOfNews) {
         this.descriptionOfNews = descriptionOfNews;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

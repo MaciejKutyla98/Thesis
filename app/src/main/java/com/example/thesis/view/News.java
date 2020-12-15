@@ -1,10 +1,12 @@
 package com.example.thesis.view;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,22 +15,29 @@ import android.widget.Toast;
 import com.example.thesis.R;
 import com.example.thesis.model.SingleNews;
 import com.example.thesis.adapters.NewsAdapter;
+import com.example.thesis.model.database.HttpHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class News extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    List<SingleNews> newsList;
+    private String TAG = News.class.getSimpleName();
+
+    private RecyclerView recyclerView;
+    private List<SingleNews> newsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        newsList = new ArrayList<>();
+        new GetData().execute();
 
-        initData();
-        initRecyclerNews();
     }
 
     @Override
@@ -141,28 +150,76 @@ public class News extends AppCompatActivity {
         recyclerView.setAdapter(newsAdapter);
     }
 
-    private void initData(){
-        newsList = new ArrayList<>();
-        newsList.add(new SingleNews(R.drawable.round_event_white_18dp,
-                "Nowe spotkanie!",
-                "Randomowy opis od zarządy"));
-        newsList.add(new SingleNews(R.drawable.round_fitness_center_white_18dp,
-                "Sport!",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."));
-        newsList.add(new SingleNews(R.drawable.round_coronavirus_white_18dp,
-                "Covid Alert!",
-                "Randomowy opis od zarządy"));
-        newsList.add(new SingleNews(R.drawable.round_notifications_active_white_18dp,
-                "Przypominajka!",
-                "Randomowy opis od zarządy"));
-        newsList.add(new SingleNews(R.drawable.round_train_white_18dp,
-                "Międzynarodówka!",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."));
-        newsList.add(new SingleNews(R.drawable.round_event_white_18dp,
-                "Nowe spotkanie",
-                "Randomowy opis od zarządy"));
-        newsList.add(new SingleNews(R.drawable.round_event_white_18dp,
-                "Nowe spotkanie",
-                "Randomowy opis od zarządy"));
+    private class GetData extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(News.this,"Pobieram dane z bazy :)",Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler sh = new HttpHandler();
+            // Making a request to url and getting response
+            String url = "https://thesis-server9.herokuapp.com/news";
+            String jsonStr = sh.makeServiceCall(url);
+            initNewsData(jsonStr);
+            return  null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            initRecyclerNews();
+
+        }
+
+        protected void initNewsData(String jsonStr){
+            Log.e(TAG, "Response from url: " + jsonStr);
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    JSONArray organization = jsonObj.getJSONArray("news");
+
+                    // looping through All Contacts
+                    for (int i = 0; i < organization.length(); i++) {
+                        JSONObject c = organization.getJSONObject(i);
+                        SingleNews news = new SingleNews(
+                                c.getString("date"),
+                                c.getString("descriptionOfNews"),
+                                c.getString("tittleOfNews")
+
+                        );
+                        newsList.add(news);
+
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
     }
 }
