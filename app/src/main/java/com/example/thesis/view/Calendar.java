@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,8 @@ public class Calendar extends AppCompatActivity {
     private CalendarView calendarView;
     private String currentDate;
     private List<Event> eventList;
-    private TextView dayInformation;
+    private TextView eventTitle, eventStart, eventEnd, titleText, startText, endText;
+
 
 
 
@@ -51,7 +53,15 @@ public class Calendar extends AppCompatActivity {
         eventList = new ArrayList<>();
         queue = Volley.newRequestQueue(this);
         jsonParse();
-        dayInformation = (TextView) findViewById(R.id.dayInformation);
+        eventTitle = (TextView) findViewById(R.id.event_title);
+        eventStart = (TextView) findViewById(R.id.event_start);
+        eventEnd = (TextView) findViewById(R.id.event_end);
+        titleText = (TextView) findViewById(R.id.title_text);
+        startText = (TextView) findViewById(R.id.start_txt);
+        endText = (TextView) findViewById(R.id.end_txt);
+        titleText.setVisibility(View.INVISIBLE);
+        startText.setVisibility(View.INVISIBLE);
+        endText.setVisibility(View.INVISIBLE);
         calendarView = (CalendarView) findViewById(R.id.myCalendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -60,10 +70,25 @@ public class Calendar extends AppCompatActivity {
                 Log.d(TAG, "Obecna data to: " + currentDate);
                 Log.d(TAG, "eventList.get(i).getEventStart() " + eventList.get(1).getEventStart().startsWith(currentDate));
 
+                eventTitle.setVisibility(View.INVISIBLE);
+                eventStart.setVisibility(View.INVISIBLE);
+                eventEnd.setVisibility(View.INVISIBLE);
+                titleText.setVisibility(View.INVISIBLE);
+                startText.setVisibility(View.INVISIBLE);
+                endText.setVisibility(View.INVISIBLE);
+
                 for(int i=0; i<eventList.size(); i++){
                     Log.d(TAG, "iteracja " + i);
                     if(eventList.get(i).getEventStart().startsWith(currentDate)){
-                        dayInformation.setText("Temat spotkania:" + eventList.get(i).getEventName() + "\nRozpocznie się o:  " + eventList.get(i).getEventStart().substring(11, 16) + "\nZakończy się o: " + eventList.get(i).getEventEnd().substring(11,16));
+                        eventTitle.setVisibility(View.VISIBLE);
+                        eventStart.setVisibility(View.VISIBLE);
+                        eventEnd.setVisibility(View.VISIBLE);
+                        titleText.setVisibility(View.VISIBLE);
+                        startText.setVisibility(View.VISIBLE);
+                        endText.setVisibility(View.VISIBLE);
+                        eventTitle.setText(eventList.get(i).getEventName());
+                        eventStart.setText(eventList.get(i).getEventStart().substring(11, 16));
+                        eventEnd.setText(eventList.get(i).getEventEnd().substring(11,16));
                     }
                 }
             }

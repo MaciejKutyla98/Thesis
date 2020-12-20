@@ -6,38 +6,96 @@
     android:layout_height="match_parent"
     tools:context=".view.Calendar">
 
-    <ScrollView
+    <CalendarView
+        android:id="@+id/myCalendar"
+        style="@android:style/Widget.DeviceDefault.CalendarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="379dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/round_button_red"
+        android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
-            <CalendarView
-                android:id="@+id/myCalendar"
-                style="@android:style/Widget.DeviceDefault.CalendarView"
-                android:layout_width="match_parent"
-                android:layout_height="379dp"
-                android:layout_marginTop="104dp"
-                android:background="@drawable/round_button_red"
-                android:clickable="false" />
+    <TextView
+        android:id="@+id/event_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/start_txt"
+        app:layout_constraintTop_toBottomOf="@+id/event_title" />
 
-            <TextView
-                android:id="@+id/dayInformation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="64dp"
-                android:layout_marginEnd="32dp"
-                android:hint="W tym dniu widocznie nie ma żadnego spotkania!"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="20dp"
-                android:textStyle="italic" />
-        </LinearLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/event_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/end_txt"
+        app:layout_constraintTop_toBottomOf="@+id/event_start" />
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Tytuł spotkania:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myCalendar" />
+
+    <TextView
+        android:id="@+id/start_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Rozpocznie się o:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_title" />
+
+    <TextView
+        android:id="@+id/end_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Zakończy się o:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_txt" />
 
 
 </android.support.constraint.ConstraintLayout>
