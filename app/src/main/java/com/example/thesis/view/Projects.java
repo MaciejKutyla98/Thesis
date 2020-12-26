@@ -1,24 +1,34 @@
 package com.example.thesis.view;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.thesis.model.Person;
 import com.example.thesis.model.Project;
 import com.example.thesis.R;
-import com.example.thesis.adapters.ProjectsAdapter;
+import com.example.thesis.controller.ProjectsAdapter;
+import com.example.thesis.model.database.HttpHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Projects extends AppCompatActivity {
 
+    private String TAG = Project.class.getSimpleName();
     RecyclerView recyclerView;
     List<Project> projectList;
 
@@ -26,9 +36,8 @@ public class Projects extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
-
-        initData();
-        initRecyclerProjects();
+        projectList = new ArrayList<>();
+        new GetData().execute();
     }
 
     @Override
@@ -141,87 +150,78 @@ public class Projects extends AppCompatActivity {
         recyclerView.setAdapter(projectsAdapter);
     }
 
-    private void initData(){
-        projectList = new ArrayList<>();
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
-        projectList.add(new Project(R.drawable.ssa,
-                "Soft Skills Academy 10",
-                "Nasze wydarzenie skupia się wokół tematyki umiejętności miękkich, czyli wszystkich tych które potrzebne są nam do skutecznej interakcji z innymi ludźmi a także do swobodnego wyrażania siebie. Korzystamy z nich nieświadomie w każdej minucie naszego życia – na studiach, w pracy, podczas spotkań ze znajomymi czy rodziną, a także podczas nauki czy organizacji dnia. To “pierwiastek ludzki”, niezbędny w każdym procesie, niemożliwy do zastąpienia przez żadną maszynę czy program. ",
-                "26.11.2020 - 06.12.2020",
-                "Julia Machnio \nKacper Szepielak \nKamil Pytel \nBenita Myśliwiec \nMarysia Nowak"));
+    private class GetData extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(Projects.this,"Pobieram dane z bazy",Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler sh = new HttpHandler();
+            // Making a request to url and getting response
+            String url = "https://thesis-server9.herokuapp.com/projects";
+            String jsonStr = sh.makeServiceCall(url);
+            initContactsData(jsonStr);
+            return  null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            Collections.sort(projectList, Project.projectNameComparator);
+            initRecyclerProjects();
+
+        }
+
+        protected void initContactsData(String jsonStr){
+            Log.e(TAG, "Response from url: " + jsonStr);
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    JSONArray jsonArray = jsonObj.getJSONArray("projects");
+
+                    // looping through All Contacts
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject c = jsonArray.getJSONObject(i);
+                        Project project = new Project(
+                                c.getString("projectName"),
+                                c.getString("description"),
+                                c.getString("date"),
+                                c.getString("coordinators")
+
+                        );
+                        projectList.add(project);
+
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
     }
 }

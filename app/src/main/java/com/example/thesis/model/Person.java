@@ -1,6 +1,8 @@
 package com.example.thesis.model;
 
-public class Person {
+import java.util.Comparator;
+
+public class Person   {
 
     private String name;
     private String telephoneNumber;
@@ -126,4 +128,13 @@ public class Person {
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
+
+    public static Comparator<Person> personNameComparator = new Comparator<Person>() {
+
+        public int compare(Person p1, Person p2) {
+            String personOne = p1.getName().toUpperCase();
+            String personTwo = p2.getName().toUpperCase();
+            return personOne.compareTo(personTwo);
+        }};
+
 }

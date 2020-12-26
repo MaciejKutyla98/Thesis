@@ -22,11 +22,10 @@
 
     <TextView
         android:id="@+id/event_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/roboto_regular"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="20dp"
@@ -42,6 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
         android:textColorHint="@color/black"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -53,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:fontFamily="@font/roboto_regular"
         android:layout_marginTop="16dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -65,11 +66,12 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="Tytuł spotkania:"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myCalendar" />
 
@@ -82,6 +84,7 @@
         android:text="Rozpocznie się o:"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/roboto_thin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/event_title" />
 
@@ -92,6 +95,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="Zakończy się o:"
+        android:fontFamily="@font/roboto_thin"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

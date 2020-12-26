@@ -1,4 +1,4 @@
-package com.example.thesis.adapters;
+package com.example.thesis.controller;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -18,7 +18,6 @@ import java.util.List;
 public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ProjectsHolder> {
 
     List<Project> projectList;
-    Context context;
 
     public ProjectsAdapter(List<Project> projectList) {
         this.projectList = projectList;
@@ -40,7 +39,6 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.Projec
         projectsHolder.descriptionTextView.setText(project.getDescription());
         projectsHolder.dateTextView.setText(project.getDate());
         projectsHolder.coordinatorsTextView.setText(project.getCoordinators());
-        projectsHolder.logo.setImageResource(project.getLogo());
 
         boolean isExpanded = projectList.get(i).isExpanded();
         projectsHolder.projectDetailsLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
@@ -54,13 +52,11 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.Projec
     public class ProjectsHolder extends RecyclerView.ViewHolder{
 
         ConstraintLayout projectDetailsLayout;
-        ImageView logo;
         TextView nameTextView, descriptionTextView, dateTextView, coordinatorsTextView;
 
         public ProjectsHolder(@NonNull View itemView) {
             super(itemView);
 
-            logo = itemView.findViewById(R.id.project_logo);
             nameTextView = itemView.findViewById(R.id.project_name);
             descriptionTextView = itemView.findViewById(R.id.project_description);
             dateTextView = itemView.findViewById(R.id.project_date);

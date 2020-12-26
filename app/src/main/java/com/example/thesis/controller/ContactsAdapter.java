@@ -1,4 +1,4 @@
-package com.example.thesis.adapters;
+package com.example.thesis.controller;
 
 import android.content.Context;
 import android.content.Intent;

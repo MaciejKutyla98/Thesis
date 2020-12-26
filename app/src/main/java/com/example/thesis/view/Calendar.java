@@ -43,9 +43,6 @@ public class Calendar extends AppCompatActivity {
     private List<Event> eventList;
     private TextView eventTitle, eventStart, eventEnd, titleText, startText, endText;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +64,6 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 currentDate = year + "-" + (month + 1) + "-" + dayOfMonth;
-                Log.d(TAG, "Obecna data to: " + currentDate);
-                Log.d(TAG, "eventList.get(i).getEventStart() " + eventList.get(1).getEventStart().startsWith(currentDate));
 
                 eventTitle.setVisibility(View.INVISIBLE);
                 eventStart.setVisibility(View.INVISIBLE);
@@ -78,7 +73,6 @@ public class Calendar extends AppCompatActivity {
                 endText.setVisibility(View.INVISIBLE);
 
                 for(int i=0; i<eventList.size(); i++){
-                    Log.d(TAG, "iteracja " + i);
                     if(eventList.get(i).getEventStart().startsWith(currentDate)){
                         eventTitle.setVisibility(View.VISIBLE);
                         eventStart.setVisibility(View.VISIBLE);

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.thesis.R;
 import com.example.thesis.model.SingleNews;
-import com.example.thesis.adapters.NewsAdapter;
+import com.example.thesis.controller.NewsAdapter;
 import com.example.thesis.model.database.HttpHandler;
 
 import org.json.JSONArray;
@@ -27,7 +27,6 @@ import java.util.List;
 public class News extends AppCompatActivity {
 
     private String TAG = News.class.getSimpleName();
-
     private RecyclerView recyclerView;
     private List<SingleNews> newsList;
 

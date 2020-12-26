@@ -1,26 +1,33 @@
 package com.example.thesis.view;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.thesis.R;
-import com.example.thesis.adapters.ActivityAdapter;
-import com.example.thesis.adapters.TeamsAdapter;
+import com.example.thesis.controller.TeamsAdapter;
 import com.example.thesis.model.Person;
 import com.example.thesis.model.Team;
+import com.example.thesis.model.database.HttpHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Teams extends AppCompatActivity {
 
+    private String TAG = Teams.class.getSimpleName();
     RecyclerView recyclerView;
     List<Team> teamList;
 
@@ -28,9 +35,8 @@ public class Teams extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams);
-
-        initData();
-        initRecyclerActivity();
+        teamList = new ArrayList<>();
+        new GetData().execute();
     }
 
     @Override
@@ -128,30 +134,84 @@ public class Teams extends AppCompatActivity {
         }
     }
 
-    private void initRecyclerActivity() {
+    private void initRecyclerTeams() {
         recyclerView = findViewById(R.id.teams_recycler);
         TeamsAdapter teamsAdapter = new TeamsAdapter(teamList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(teamsAdapter);
     }
 
-    private void initData() {
-        teamList = new ArrayList<>();
-        teamList.add(new Team("IT Team",
-                "Hubert Kompanowski, Maciej Kutyła",
-                "13",
-                "IT Team to jeden z 4 teamów całorocznych odpowiedzialny za wszelką infrastrukturę IT w naszej organizacji. Zajmują się naszymi stronami internetowymi, dbają o to aby maile nie trafiały do spamu, a nasze domeny były zawsze opłacone. W międzyczasie koordynatory i bardziej zaangażowani członkowie dzielą się z techniczną wiedzą z resztą organizacji."));
-        teamList.add(new Team("PR Team",
-                "Hubert Kompanowski, Maciej Kutyła",
-                "13",
-                "IT Team to jeden z 4 teamów całorocznych odpowiedzialny za wszelką infrastrukturę IT w naszej organizacji. Zajmują się naszymi stronami internetowymi, dbają o to aby maile nie trafiały do spamu, a nasze domeny były zawsze opłacone. W międzyczasie koordynatory i bardziej zaangażowani członkowie dzielą się z techniczną wiedzą z resztą organizacji."));
-        teamList.add(new Team("Design Team",
-                "Hubert Kompanowski, Maciej Kutyła",
-                "13",
-                "IT Team to jeden z 4 teamów całorocznych odpowiedzialny za wszelką infrastrukturę IT w naszej organizacji. Zajmują się naszymi stronami internetowymi, dbają o to aby maile nie trafiały do spamu, a nasze domeny były zawsze opłacone. W międzyczasie koordynatory i bardziej zaangażowani członkowie dzielą się z techniczną wiedzą z resztą organizacji."));
-        teamList.add(new Team("LITE",
-                "Hubert Kompanowski, Maciej Kutyła",
-                "13",
-                "IT Team to jeden z 4 teamów całorocznych odpowiedzialny za wszelką infrastrukturę IT w naszej organizacji. Zajmują się naszymi stronami internetowymi, dbają o to aby maile nie trafiały do spamu, a nasze domeny były zawsze opłacone. W międzyczasie koordynatory i bardziej zaangażowani członkowie dzielą się z techniczną wiedzą z resztą organizacji."));
+    private class GetData extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(Teams.this,"Pobieram dane z bazy",Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler sh = new HttpHandler();
+            // Making a request to url and getting response
+            String url = "https://thesis-server9.herokuapp.com/teams";
+            String jsonStr = sh.makeServiceCall(url);
+            initContactsData(jsonStr);
+            return  null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            initRecyclerTeams();
+
+        }
+
+        protected void initContactsData(String jsonStr){
+            Log.e(TAG, "Response from url: " + jsonStr);
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    JSONArray jsonArray = jsonObj.getJSONArray("teams");
+
+                    // looping through All Contacts
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject c = jsonArray.getJSONObject(i);
+                        Team team = new Team(
+                                c.getString("teamName"),
+                                c.getString("teamCoordinators"),
+                                c.getString("numberOfMembers"),
+                                c.getString("teamDescription")
+
+                        );
+                        teamList.add(team);
+
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
     }
 }

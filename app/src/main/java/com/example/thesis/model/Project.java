@@ -1,29 +1,21 @@
 package com.example.thesis.model;
 
+import java.util.Comparator;
+
 public class Project {
 
-    private int logo;
     private String projectName;
     private String description;
     private String date;
     private String coordinators;
     private  boolean expanded;
 
-    public Project(int logo, String projectName, String description, String date, String coordinators) {
-        this.logo = logo;
+    public Project(String projectName, String description, String date, String coordinators) {
         this.projectName = projectName;
         this.description = description;
         this.date = date;
         this.coordinators = coordinators;
         this.expanded = false;
-    }
-
-    public int getLogo() {
-        return logo;
-    }
-
-    public void setLogo(int logo) {
-        this.logo = logo;
     }
 
     public String getProjectName() {
@@ -66,4 +58,12 @@ public class Project {
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
+
+    public static Comparator<Project> projectNameComparator = new Comparator<Project>() {
+
+        public int compare(Project p1, Project p2) {
+            String projectOne = p1.getProjectName().toUpperCase();
+            String projectTwo = p2.getProjectName().toUpperCase();
+            return projectOne.compareTo(projectTwo);
+        }};
 }
