@@ -38,6 +38,7 @@ public class Person   {
         this.pass = pass;
     }
 
+
     public Person(String name, String telephoneNumber, String mail) {
         this.name = name;
         this.telephoneNumber = telephoneNumber;

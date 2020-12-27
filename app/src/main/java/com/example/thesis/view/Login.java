@@ -19,14 +19,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
 
     private String TAG = Login.class.getSimpleName();
-    private String login;
-    private String pass;
+    private String login, pass;
     private Button logInButton;
     List<Person> peopleList;
 
@@ -38,7 +36,7 @@ public class Login extends AppCompatActivity {
         peopleList = new ArrayList<>();
         new GetData().execute();
 
-        logInButton = (Button) findViewById(R.id.login_button);
+        logInButton = (Button) findViewById(R.id.register_button);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
