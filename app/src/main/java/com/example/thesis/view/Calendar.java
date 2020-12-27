@@ -39,7 +39,7 @@ public class Calendar extends AppCompatActivity {
     private static final String accesstoken = "SwZcwL7DxYzGUW07yyDuk7R5LilRv0";
     private RequestQueue queue;
     private CalendarView calendarView;
-    private String currentDate;
+    private String username, currentDate;
     private List<Event> eventList;
     private TextView eventTitle, eventStart, eventEnd, titleText, startText, endText;
 
@@ -48,6 +48,7 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         eventList = new ArrayList<>();
+        username = getIntent().getStringExtra("username");
         queue = Volley.newRequestQueue(this);
         jsonParse();
         eventTitle = (TextView) findViewById(R.id.event_title);
@@ -107,6 +108,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Calendar.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -118,6 +120,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Teams.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -129,6 +132,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, News.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -140,6 +144,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ActivitySheet.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -151,6 +156,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Contacts.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -162,6 +168,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Projects.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -173,6 +180,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ImportantLinks.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -184,6 +192,7 @@ public class Calendar extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;

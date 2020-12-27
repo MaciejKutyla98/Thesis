@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 public class Person   {
 
+    private String login;
+    private String pass;
     private String name;
     private String telephoneNumber;
     private String mail;
@@ -14,6 +16,9 @@ public class Person   {
     private String internationalActivity;
     private String currentStatus;
     private boolean expanded;
+
+    public Person() {
+    }
 
     public Person(String name, String telephoneNumber, String mail, String fieldOfStudy, String faculty, String yearOfStudy, String position, String internationalActivity, String currentStatus) {
         this.name = name;
@@ -28,7 +33,9 @@ public class Person   {
         this.expanded = false;
     }
 
-    public Person() {
+    public Person(String login, String pass) {
+        this.login = login;
+        this.pass = pass;
     }
 
     public Person(String name, String telephoneNumber, String mail) {
@@ -47,6 +54,22 @@ public class Person   {
         this.internationalActivity = internationalActivity;
         this.currentStatus = currentStatus;
         this.expanded = false;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public String getName() {

@@ -18,7 +18,7 @@
         <activity android:name=".view.OrganizationDetails" />
         <activity
             android:name=".view.DetailNews"
-            android:label="Details"
+            android:label="Szczegóły"
             android:parentActivityName=".view.News" />
         <activity android:name=".view.Calendar" />
         <activity android:name=".view.ImportantLinks" />
@@ -30,7 +30,6 @@
         <activity android:name=".view.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

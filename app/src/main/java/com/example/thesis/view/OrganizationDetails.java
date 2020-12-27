@@ -25,14 +25,14 @@ import com.example.thesis.model.database.HttpHandler;
 public class OrganizationDetails extends AppCompatActivity {
 
     private String TAG = OrganizationDetails.class.getSimpleName();
-
+    private String username;
     ArrayList<HashMap<String, String>> organizationDetailsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization_details);
-        
+        username = getIntent().getStringExtra("username");
         organizationDetailsList  = new ArrayList<>();
         new GetData().execute();
     }
@@ -54,6 +54,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Calendar.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -65,6 +66,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Teams.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -76,6 +78,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, News.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -87,6 +90,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ActivitySheet.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -98,6 +102,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Contacts.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -109,6 +114,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Projects.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -120,6 +126,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ImportantLinks.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -131,6 +138,7 @@ public class OrganizationDetails extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;

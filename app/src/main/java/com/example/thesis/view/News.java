@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.thesis.R;
@@ -28,12 +30,19 @@ public class News extends AppCompatActivity {
 
     private String TAG = News.class.getSimpleName();
     private RecyclerView recyclerView;
+    private String username;
+    private Button addNewNews;
     private List<SingleNews> newsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        username = getIntent().getStringExtra("username");
+        addNewNews = (Button) findViewById(R.id.add_new_news);
+        addNewNews.setVisibility(View.INVISIBLE);
+        if(username.equals("Oskar12345")|| username.equals("LHajec")|| username.equals("Sagata")|| username.equals("KaKania")|| username.equals("MKilian"))
+            addNewNews.setVisibility(View.VISIBLE);
         newsList = new ArrayList<>();
         new GetData().execute();
 
@@ -56,6 +65,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Calendar.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -67,6 +77,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Teams.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -78,6 +89,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, News.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -89,6 +101,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ActivitySheet.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -100,6 +113,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Contacts.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -111,6 +125,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Projects.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -122,6 +137,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ImportantLinks.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -133,6 +149,7 @@ public class News extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;

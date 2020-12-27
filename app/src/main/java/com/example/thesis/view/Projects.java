@@ -29,6 +29,7 @@ import java.util.List;
 public class Projects extends AppCompatActivity {
 
     private String TAG = Project.class.getSimpleName();
+    private String username;
     RecyclerView recyclerView;
     List<Project> projectList;
 
@@ -37,6 +38,7 @@ public class Projects extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
         projectList = new ArrayList<>();
+        username = getIntent().getStringExtra("username");
         new GetData().execute();
     }
 
@@ -57,6 +59,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Calendar.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -68,6 +71,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Teams.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -79,6 +83,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, News.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -90,6 +95,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ActivitySheet.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -101,6 +107,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Contacts.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -112,6 +119,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Projects.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -123,6 +131,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ImportantLinks.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -134,6 +143,7 @@ public class Projects extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;

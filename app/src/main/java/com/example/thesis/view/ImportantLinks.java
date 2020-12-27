@@ -14,10 +14,13 @@ import com.example.thesis.R;
 
 public class ImportantLinks extends AppCompatActivity {
 
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_important_links);
+        username = getIntent().getStringExtra("username");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,6 +39,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Calendar.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -47,6 +51,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Teams.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -58,6 +63,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, News.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -69,6 +75,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ActivitySheet.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -80,6 +87,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Contacts.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -91,6 +99,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, Projects.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -102,6 +111,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, ImportantLinks.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -113,6 +123,7 @@ public class ImportantLinks extends AppCompatActivity {
                 }
                 else {
                     Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
@@ -121,6 +132,7 @@ public class ImportantLinks extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     public void openForum(View view){
         Uri uri = Uri.parse("https://forum.eestec.agh.edu.pl");

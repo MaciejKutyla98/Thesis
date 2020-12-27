@@ -28,6 +28,7 @@ import java.util.List;
 public class Teams extends AppCompatActivity {
 
     private String TAG = Teams.class.getSimpleName();
+    private String username;
     RecyclerView recyclerView;
     List<Team> teamList;
 
@@ -35,6 +36,7 @@ public class Teams extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams);
+        username = getIntent().getStringExtra("username");
         teamList = new ArrayList<>();
         new GetData().execute();
     }
@@ -50,81 +52,97 @@ public class Teams extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.calendar:
-                if (this.getClass().getSimpleName().equals("Calendar")) {
+                if (this.getClass().getSimpleName().equals("Calendar")){
                     Toast.makeText(this, "Jesteś już w kalendarzu!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, Calendar.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.teams:
-                if (this.getClass().getSimpleName().equals("Teams")) {
+                if (this.getClass().getSimpleName().equals("Teams")){
                     Toast.makeText(this, "Jesteś już w informacjach o zespołach całorocznych!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, Teams.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.news:
-                if (this.getClass().getSimpleName().equals("News")) {
+                if (this.getClass().getSimpleName().equals("News")){
                     Toast.makeText(this, "Jesteś już w ogłoszeniach!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, News.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.activity_sheet:
-                if (this.getClass().getSimpleName().equals("ActivitySheet")) {
+                if (this.getClass().getSimpleName().equals("ActivitySheet")){
                     Toast.makeText(this, "Jesteś już w Arkuszu Aktywności!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, ActivitySheet.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.contacts:
-                if (this.getClass().getSimpleName().equals("Contacts")) {
+                if (this.getClass().getSimpleName().equals("Contacts")){
                     Toast.makeText(this, "Jesteś już w liście kontaktów!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, Contacts.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.projects:
-                if (this.getClass().getSimpleName().equals("Projects")) {
+                if (this.getClass().getSimpleName().equals("Projects")){
                     Toast.makeText(this, "Jesteś już w projektach!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, Projects.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.important_links:
-                if (this.getClass().getSimpleName().equals("ImportantLinks")) {
+                if (this.getClass().getSimpleName().equals("ImportantLinks")){
                     Toast.makeText(this, "Jesteś już w ważnych linkach!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, ImportantLinks.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
                 }
             case R.id.organization_details:
-                if (this.getClass().getSimpleName().equals("OrganizationDetails")) {
+                if (this.getClass().getSimpleName().equals("OrganizationDetails")){
                     Toast.makeText(this, "Jesteś już w informacjach o organizacji!", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+                }
+                else {
                     Intent launchNewIntent = new Intent(this, OrganizationDetails.class);
+                    launchNewIntent.putExtra("username", username);
                     startActivityForResult(launchNewIntent, 0);
                     finish();
                     return true;
