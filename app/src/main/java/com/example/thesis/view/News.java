@@ -238,4 +238,11 @@ public class News extends AppCompatActivity {
             }
         }
     }
+
+    public void goToCreateNewsActivity(View view){
+        Intent launchNewIntent = new Intent(this, CreateNews.class);
+        launchNewIntent.putExtra("username", username);
+        startActivity(launchNewIntent);
+        finish();
+    }
 }

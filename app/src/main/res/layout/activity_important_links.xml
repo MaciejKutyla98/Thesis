@@ -8,95 +8,94 @@
     tools:context=".view.ImportantLinks">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/forum_link"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_button_red"
+            android:fontFamily="@font/roboto_regular"
+            android:onClick="openForum"
+            android:text="FORUM"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/forum_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="@font/roboto_regular"
-                android:onClick="openForum"
-                android:text="FORUM"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+        <Button
+            android:id="@+id/eestec_net_link"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_button_red"
+            android:fontFamily="@font/roboto_regular"
+            android:onClick="openEESTECNet"
+            android:text="EESTEC.NET"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/eestec_net_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="@font/roboto_regular"
-                android:onClick="openEESTECNet"
-                android:text="EESTEC.NET"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+        <Button
+            android:id="@+id/fb_group_link"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_button_red"
+            android:fontFamily="@font/roboto_regular"
+            android:onClick="openFacebookGroup"
+            android:text="GRUPA NA FACEBOOKU"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/fb_group_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="@font/roboto_regular"
-                android:onClick="openFacebookGroup"
-                android:text="GRUPA NA FACEBOOKU"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+        <Button
+            android:id="@+id/instagram_link"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_button_red"
+            android:fontFamily="@font/roboto_regular"
+            android:onClick="openInstagram"
+            android:text="INSTAGRAM"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/instagram_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="@font/roboto_regular"
-                android:onClick="openInstagram"
-                android:text="INSTAGRAM"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/fanpage_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="@font/roboto_regular"
-                android:onClick="openFacebookPage"
-                android:text="FACEBOOK"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+        <Button
+            android:id="@+id/fanpage_facebook_link"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_button_red"
+            android:fontFamily="@font/roboto_regular"
+            android:onClick="openFacebookPage"
+            android:text="FACEBOOK"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
 
-
-            <TextView
-                android:id="@+id/noAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/round_button_red"
-                android:fontFamily="@font/roboto_regular"
-                android:text="Chcesz coś dodać? Daj znać!  "
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/noAccount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/round_button_red"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Chcesz coś dodać? Daj znać!  "
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </ScrollView>

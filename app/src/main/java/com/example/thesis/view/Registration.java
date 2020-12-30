@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,6 +32,7 @@ public class Registration extends AppCompatActivity {
 
     private String login, pass, secondPassword, name;
     private Button registerButton;
+    RequestQueue requestQueue;
     List<Person> peopleList;
 
     @Override
@@ -40,6 +42,7 @@ public class Registration extends AppCompatActivity {
         getSupportActionBar().hide();
         getAllUsers();
 
+        requestQueue = Volley.newRequestQueue(this);
         peopleList = new ArrayList<>();
         registerButton = (Button) findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -85,30 +88,30 @@ public class Registration extends AppCompatActivity {
     }
 
     private void createAccount(){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = "https://thesis-server9.herokuapp.com/createNewUser";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                System.out.println(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+      String url = "https://thesis-server9.herokuapp.com/createNewUser";
 
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("login", login);
-                params.put("pass", pass);
-                params.put("name", name);
-                return params;
-            }
+    JSONObject postData = new JSONObject();
+        try {
+        postData.put("login", login);
+        postData.put("pass", pass);
+        postData.put("pass", name);
 
-        };
-        requestQueue.add(stringRequest);
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+            System.out.println(response);
+        }
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            error.printStackTrace();
+        }
+    });
+        requestQueue.add(jsonObjectRequest);
     }
 
     private void getAllUsers(){
